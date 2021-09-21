@@ -1,15 +1,16 @@
+/*
 Duration sinceNow(DateTime self) => -(self.difference(DateTime.now()));
 
-X find<X>(List<X> self, [bool filter(X input)]) {
-  return self?.firstWhere(filter, orElse: () => null);
+X find<X>(List<X> self, bool filter(X input)) {
+  return self.firstWhere(filter, orElse: () => null);
 }
 
-X lastOrNull<X>(List<X> self, [bool filter(X input)]) {
-  return self?.lastWhere(filter, orElse: () => null);
+X? lastOrNull<X>(List<X> self, bool filter(X input)) {
+  return self.lastWhere(filter, orElse: () => null);
 }
 
 X firstOrNull<X>(List<X> self, [bool filter(X input)]) {
-  return self?.firstWhere(filter, orElse: () => null);
+  return self.firstWhere(filter, orElse: () => null);
 }
 
 String truncate(String self, int length) {
@@ -37,3 +38,4 @@ String orEmpty(String self) {
 }
 
 String value(self) => "$self".replaceAll(RegExp(".*\\."), "");
+*/

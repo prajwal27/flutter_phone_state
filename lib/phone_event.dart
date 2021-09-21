@@ -1,6 +1,6 @@
+/*
 import 'dart:async';
 
-import 'package:flutter_phone_state/extensions_static.dart';
 import 'package:logging/logging.dart';
 import 'package:uuid/uuid.dart';
 
@@ -31,7 +31,7 @@ class RawPhoneEvent {
 
   @override
   String toString() {
-    return 'RawPhoneEvent{type: ${value(type)}, id: ${truncate(id, 12) ?? '-'}, phoneNumber: ${phoneNumber ?? '-'}}';
+    return 'RawPhoneEvent{type: $type, id: $id, phoneNumber: ${phoneNumber ?? '-'}}';
   }
 
   @override
@@ -177,12 +177,12 @@ class PhoneCall {
 
   /// Whether this call can be linked to the provided event.  This check is fairly loose, it makes sure that
   /// the values aren't for two disparate ids, phone numbers, and that the status is a subsequent status
-  bool canBeLinked(RawPhoneEvent event) {
-    if (event.phoneNumber != null &&
+  bool canBeLinked(RawPhoneEvent? event) {
+    if (event?.phoneNumber != null &&
         this.phoneNumber != null &&
-        event.phoneNumber != this.phoneNumber) return false;
-    if (this.callId != null && this.callId != event.id) return false;
-    if (isNotBefore(status, event.type)) return false;
+        event?.phoneNumber != this.phoneNumber) return false;
+    if (this.callId != null && this.callId != event?.id) return false;
+    if (isNotBefore(status, event?.type)) return false;
 
     return true;
   }
@@ -246,3 +246,4 @@ bool isNotBefore(PhoneCallStatus status, RawEventType type) =>
 bool isBefore(PhoneCallStatus status, RawEventType type) {
   return priorStatuses[type]?.contains(status) == true;
 }
+*/
