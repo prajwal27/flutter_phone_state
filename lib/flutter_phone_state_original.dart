@@ -1,3 +1,4 @@
+/*
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -48,7 +49,7 @@ class FlutterPhoneState with WidgetsBindingObserver {
   FlutterPhoneState() {
     configureLogging(logger: _log);
     WidgetsBinding.instance.addObserver(this);
-    _initializedNativeEvents.forEach(_handleRawPhoneEvent);
+    _initializedNativeEvents?.forEach(_handleRawPhoneEvent);
   }
 
   /// A list of active calls.  Theoretically, you could initiate a call while the first is still in flight.
@@ -58,11 +59,11 @@ class FlutterPhoneState with WidgetsBindingObserver {
   List<PhoneCall> _calls = <PhoneCall>[];
 
   /// Finds a previously placed call that matches the incoming event
-  PhoneCall _findMatchingCall(RawPhoneEvent event) {
+  PhoneCall _findMatchingCall(RawPhoneEvent? event) {
     // Either the first matching, or the first one without an ID
-    PhoneCall matching;
-    if (event.id != null) {
-      matching = firstOrNull(_calls, (c) => c.callId == event.id);
+    PhoneCall? matching;
+    if (event?.id != null) {
+      matching = firstOrNull(_calls, (c) => c?.callId == event?.id);
     }
     matching ??= lastOrNull(_calls, (call) => call.canBeLinked(event));
     if (matching != null) {
@@ -147,7 +148,7 @@ class FlutterPhoneState with WidgetsBindingObserver {
     }
   }
 
-  _handleRawPhoneEvent(RawPhoneEvent event) async {
+  _handleRawPhoneEvent(RawPhoneEvent? event) async {
     try {
       _pruneCalls();
       PhoneCall matching = _findMatchingCall(event);
@@ -210,10 +211,10 @@ final EventChannel _phoneStateCallEventChannel =
     EventChannel('co.sunnyapp/phone_events');
 
 /// Native event stream, lazily created.  See [nativeEvents]
-Stream<RawPhoneEvent> _nativeEvents;
+Stream<RawPhoneEvent?>? _nativeEvents;
 
 /// A stream of [RawPhoneEvent] instances.  The stream only contains null values if there was an error
-Stream<RawPhoneEvent> get _initializedNativeEvents {
+Stream<RawPhoneEvent?>? get _initializedNativeEvents {
   _nativeEvents ??=
       _phoneStateCallEventChannel.receiveBroadcastStream().map((dyn) {
     try {
@@ -283,3 +284,4 @@ Future<LinkOpenResult> _openTelLink(String appLink) async {
 }
 
 enum LinkOpenResult { invalidInput, unsupported, success, failed }
+*/
