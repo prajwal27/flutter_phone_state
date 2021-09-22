@@ -37,7 +37,7 @@ class FlutterPhoneState {
         final Map<String, dynamic> event = (dyn as Map).cast();
         final eventType = _parseEventType(event["type"] as String);
         return RawPhoneEvent(
-            event["id"] as String, event["phoneNumber"] as String, eventType);
+            event["id"] as String?, event["phoneNumber"] as String?, eventType);
       } catch (e, stack) {
         _log.severe("Error handling native event $e", e, stack);
         return null;
@@ -69,10 +69,10 @@ class RawPhoneEvent {
   /// android: always null
   /// ios: a uuid
   /// others: ??
-  final String id;
+  final String? id;
 
   /// If available, the phone number being dialed.
-  final String phoneNumber;
+  final String? phoneNumber;
 
   /// The type of call event.
   final RawEventType type;
