@@ -28,6 +28,7 @@ class FlutterPhoneState {
     _phoneStateCallEvent ??=
         _phoneStateCallEventChannel.receiveBroadcastStream().map((dynamic dyn) {
       try {
+        _log.info('callEvent: $dyn');
         if (dyn == null) return null;
         if (dyn is! Map) {
           _log.warning("Unexpected result type for phone event.  "
@@ -43,6 +44,7 @@ class FlutterPhoneState {
       }
       //return _listphoneStateCallEvent(event as String);
     });
+    _log.severe('phoneStateCallEvent ${_phoneStateCallEvent != null}');
     return _phoneStateCallEvent;
   }
 

@@ -18,7 +18,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_phone_state:
+  flutter_phone_state_okdone:
     path: ../
 
 # For information on the generic Dart part of this file, see the
