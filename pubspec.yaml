@@ -1,6 +1,6 @@
 name: flutter_phone_state_okdone
 description: This plugin provides an easy way to make phone calls, and track the state of the phone call
-version: 0.5.9
+version: 0.5.9+1
 homepage: "https://github.com/prajwal27/flutter_phone_state.git"
 
 environment:
